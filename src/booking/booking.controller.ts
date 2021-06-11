@@ -41,4 +41,9 @@ export class BookingController {
   remove(@Param('id') id: string) {
     return this.bookingService.remove(+id);
   }
+
+  @Get('estimate')
+  estimate(@Body() createBookingDto: CreateBookingDto) {
+    return this.bookingService.estimate(createBookingDto);
+  }
 }

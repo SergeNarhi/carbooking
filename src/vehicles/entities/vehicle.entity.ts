@@ -1,10 +1,16 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Booking } from '../../booking/entities/booking.entity';
 
 @Entity()
 export class Vehicle {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: string;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: string;
 
   @Column()
   brand: string;

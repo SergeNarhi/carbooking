@@ -1,22 +1,29 @@
 import {
   Column,
-  Entity, ManyToOne,
-  OneToMany,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
-  RelationId
-} from "typeorm";
+  UpdateDateColumn,
+} from 'typeorm';
 import { Plan } from '../../plans/entities/plan.entity';
-import { Vehicle } from "../../vehicles/entities/vehicle.entity";
+import { Vehicle } from '../../vehicles/entities/vehicle.entity';
 
 @Entity()
 export class Booking {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @CreateDateColumn({ type: 'timestamp' })
+  createdAt: string;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  updatedAt: string;
+
+  @Column({ type: 'timestamp' })
   dateStart: string;
 
-  @Column()
+  @Column({ type: 'timestamp' })
   dateEnd: string;
 
   @ManyToOne(() => Plan, (plan) => plan.bookings)
